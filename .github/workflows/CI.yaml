@@ -29,3 +29,8 @@ jobs:
       - run: composer install --prefer-dist --no-progress
 
       - run: composer run-script test || true # ignore exit code, we're only interested in the TAP results
+
+      - uses: test-summary/action@v2
+        with:
+          paths: "**/*.tap"
+        if: always()

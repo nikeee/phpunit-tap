@@ -31,7 +31,7 @@ final class TapResultPrinter implements Tracer
                 new TestPoint(
                     true,
                     number: null,
-                    description: $event->test()->name(),
+                    description: $event->test()->id(),
                     directive: null,
                     yamlBlock: null,
                 )
@@ -41,7 +41,7 @@ final class TapResultPrinter implements Tracer
                 new TestPoint(
                     false,
                     number: null,
-                    description: $event->test()->name(),
+                    description: $event->test()->id(),
                     directive: null,
                     yamlBlock: null,
                 )
@@ -51,7 +51,7 @@ final class TapResultPrinter implements Tracer
                 new TestPoint(
                     true,
                     number: null,
-                    description: $event->test()->name(),
+                    description: $event->test()->id(),
                     directive: Directive::SKIP,
                     yamlBlock: null,
                 )

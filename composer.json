@@ -1,6 +1,6 @@
 {
     "name": "nikeee/phpunit-tap",
-    "description": "A simple Composer package with a TAP result printer for phpunit@^10",
+    "description": "A phpunit 10+ extension for TAP reports",
     "type": "library",
     "license": "MIT",
     "keywords": ["test","phpunit", "tap", "phpunit reporter"],

@@ -1,6 +1,6 @@
 # phpunit-tap
 
-A TAP extension for phpunit 10+. Based on [gh640/phpunit-tap](https://github.com/gh640/phpunit-tap) (which works for phpunit 9).
+A [TAP](https://testanything.org) extension for phpunit 10+. Based on [gh640/phpunit-tap](https://github.com/gh640/phpunit-tap) (which works for phpunit 9).
 
 ## Usage
 ```sh

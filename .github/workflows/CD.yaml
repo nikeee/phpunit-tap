@@ -34,3 +34,4 @@ jobs:
         with:
           paths: "**/*.tap"
         if: always()
+      - uses: pcolby/tap-summary@v1

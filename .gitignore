@@ -54,3 +54,5 @@ modules.xml
 
 # Build data
 /build/
+
+*.tap

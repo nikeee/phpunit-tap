@@ -26,11 +26,8 @@ class TestPoint
             $result .= " - $escapedDescription";
         }
 
-        if ($this->directive) {
-            $result .= ' # ' . match ($this->directive) {
-                    Directive::SKIP => 'skip',
-                    Directive::TODO => 'todo',
-                };
+        if ($this->directive !== null) {
+            $result .= $this->directive->asString();
         }
 
         if ($this->yamlBlock !== null) {

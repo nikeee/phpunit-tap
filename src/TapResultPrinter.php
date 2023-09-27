@@ -52,7 +52,7 @@ final class TapResultPrinter implements Tracer
                     true,
                     number: null,
                     description: $event->test()->id(),
-                    directive: Directive::SKIP,
+                    directive: Directive::skip(),
                     yamlBlock: null,
                 )
             );

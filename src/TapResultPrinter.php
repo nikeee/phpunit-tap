@@ -23,7 +23,7 @@ final class TapResultPrinter implements Tracer
     public function trace(Event $event): void
     {
         if ($event instanceof Started) {
-            $this->writer->version();
+            $this->writer->version(13);
         } else if ($event instanceof Loaded) {
             $this->writer->plan($event->testSuite()->count());
         } else if ($event instanceof Passed) {

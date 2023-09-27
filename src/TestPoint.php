@@ -2,6 +2,8 @@
 
 namespace nikeee\PhpunitTap;
 
+use Symfony\Component\Yaml\Yaml;
+
 class TestPoint
 {
     public function __construct(
@@ -9,7 +11,7 @@ class TestPoint
         private readonly ?int       $number,
         private readonly ?string    $description = null,
         private readonly ?Directive $directive = null,
-        private readonly ?string    $yamlBlock = null,
+        private readonly ?array     $yamlMetadata = null,
     )
     {
     }
@@ -30,9 +32,14 @@ class TestPoint
             $result .= $this->directive->asString();
         }
 
-        if ($this->yamlBlock !== null) {
+        if ($this->yamlMetadata !== null) {
             $result .= "\n";
-            $result .= $this->yamlBlock;
+
+            $yaml = Yaml::dump($this->yamlMetadata);
+
+            $asFrontMatter = "---\n$yaml...";
+
+            $result .= StringUtils::indent($asFrontMatter, 2, ' ');
         }
 
         $result .= "\n";

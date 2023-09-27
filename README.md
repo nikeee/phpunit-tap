@@ -13,7 +13,7 @@ To print the TAP output to a file (for example, `output.tap`), add the bootstrap
 <phpunit>
   <extensions>
     <bootstrap class="nikeee\PhpunitTap\TapExtension">
-        <parameter name="fileName" value="output.tap"/>
+      <parameter name="fileName" value="output.tap"/>
     </bootstrap>
   </extensions>
 </phpunit>

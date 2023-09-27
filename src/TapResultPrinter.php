@@ -33,17 +33,31 @@ final class TapResultPrinter implements Tracer
                     number: null,
                     description: $event->test()->id(),
                     directive: null,
-                    yamlBlock: null,
+                    yamlMetadata: null,
                 )
             );
         } else if ($event instanceof Failed) {
+
+            $metadata = [];
+            if ($event->hasComparisonFailure()) {
+                $metadata['message'] = 'Comparison Failure';
+                $metadata['severity'] = 'fail';
+                $metadata['thrown'] = false;
+                $metadata['actual'] = $event->comparisonFailure()->actual();
+                $metadata['expected'] = $event->comparisonFailure()->expected();
+            } else {
+                $metadata['message'] = $event->throwable()->message();
+                $metadata['severity'] = 'fail';
+                $metadata['thrown'] = true;
+            }
+
             $this->writer->testPoint(
                 new TestPoint(
                     false,
                     number: null,
                     description: $event->test()->id(),
                     directive: null,
-                    yamlBlock: null,
+                    yamlMetadata: $metadata,
                 )
             );
         } else if ($event instanceof Skipped) {
@@ -53,7 +67,7 @@ final class TapResultPrinter implements Tracer
                     number: null,
                     description: $event->test()->id(),
                     directive: Directive::skip($event->message()),
-                    yamlBlock: null,
+                    yamlMetadata: null,
                 )
             );
         } else if ($event instanceof Finished) {

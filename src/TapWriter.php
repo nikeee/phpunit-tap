@@ -60,23 +60,11 @@ class TapWriter
 
     private function write(string $value): void
     {
-        $this->buffer .= self::indent($value, $this->indentLevel);
+        $this->buffer .= StringUtils::indent($value, $this->indentLevel);
     }
 
     function getString(): string
     {
         return $this->buffer;
-    }
-
-    private static function indent(string $value, int $level): string
-    {
-        if ($level === 0) {
-            return $value;
-        }
-
-        $split = explode("\n", $value);
-        $indentation = str_repeat(' ', $level);
-        $indented = array_map(fn($line) => $indentation . $line, $split);
-        return implode("\n", $indented);
     }
 }

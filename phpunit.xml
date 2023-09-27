@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit>
   <extensions>
-    <bootstrap class="nikeee\PhpunitTap\TapExtension" />
+    <bootstrap class="nikeee\PhpunitTap\TapExtension">
+      <parameter name="fileName" value="output.tap"/>
+    </bootstrap>
   </extensions>
   <testsuites>
     <testsuite name="All">

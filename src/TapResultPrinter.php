@@ -77,7 +77,8 @@ final class TapResultPrinter implements Tracer
                 echo $this->writer->getString();
             }
         } else {
-            var_dump(get_class($event));
+            // Use this to debug for useful events:
+            // var_dump(get_class($event));
         }
     }
 }

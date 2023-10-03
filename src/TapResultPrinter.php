@@ -27,12 +27,13 @@ final class TapResultPrinter implements Tracer
         } else if ($event instanceof Loaded) {
             $this->writer->plan($event->testSuite()->count());
         } else if ($event instanceof Passed) {
+            $durationMs = $event->telemetryInfo()->durationSincePrevious()->asFloat() * 1000;
             $this->writer->testPoint(
                 new TestPoint(
                     true,
                     number: null,
                     description: $event->test()->id(),
-                    directive: null,
+                    directive: Directive::time($durationMs),
                     yamlMetadata: null,
                 )
             );
@@ -51,12 +52,13 @@ final class TapResultPrinter implements Tracer
                 $metadata['thrown'] = true;
             }
 
+            $durationMs = $event->telemetryInfo()->durationSincePrevious()->asFloat() * 1000;
             $this->writer->testPoint(
                 new TestPoint(
                     false,
                     number: null,
                     description: $event->test()->id(),
-                    directive: null,
+                    directive: Directive::time($durationMs),
                     yamlMetadata: $metadata,
                 )
             );

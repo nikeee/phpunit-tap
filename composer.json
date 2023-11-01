@@ -14,7 +14,7 @@
     "require": {
         "symfony/yaml": "^6.3",
         "php": "^8.1",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^10.4"
     },
     "autoload": {
         "psr-4": {

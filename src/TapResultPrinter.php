@@ -4,6 +4,7 @@ namespace nikeee\PhpunitTap;
 
 use PHPUnit\Event\Application\Started;
 use PHPUnit\Event\Event;
+use PHPUnit\Event\Test\Errored;
 use PHPUnit\Event\Test\Failed;
 use PHPUnit\Event\Test\Passed;
 use PHPUnit\Event\Test\Skipped;
@@ -37,10 +38,10 @@ final class TapResultPrinter implements Tracer
                     yamlMetadata: null,
                 )
             );
-        } else if ($event instanceof Failed) {
+        } else if ($event instanceof Failed || $event instanceof Errored) {
 
             $metadata = [];
-            if ($event->hasComparisonFailure()) {
+            if ($event instanceof Failed && $event->hasComparisonFailure()) {
                 $metadata['message'] = 'Comparison Failure';
                 $metadata['severity'] = 'fail';
                 $metadata['thrown'] = false;

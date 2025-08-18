@@ -10,6 +10,7 @@ class TapWriter
     // Version := "TAP version 14\n"
     function version(int $version = 14): void
     {
+        $this->write("\n"); // Start from a new line.
         $this->write("TAP version $version\n");
     }
 
